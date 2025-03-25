@@ -1,0 +1,116 @@
+.add-transaction-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .add-transaction-page h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .add-transaction-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+  
+  .transaction-form {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .type-toggle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .type-toggle button {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s ease;
+  }
+  
+  .type-toggle .active {
+    background-color: #6366f1;
+    color: white;
+    border-color: #6366f1;
+  }
+  
+  .transaction-form input,
+  .transaction-form textarea {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .cancel-btn {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0.6rem 1.25rem;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .submit-btn {
+    background: #6366f1;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .recent-categories {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: fit-content;
+  }
+  
+  .recent-categories h4 {
+    margin-bottom: 1rem;
+  }
+  
+  .category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag {
+    background: #f3f4f6;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+  }
+  

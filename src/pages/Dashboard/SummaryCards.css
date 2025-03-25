@@ -1,0 +1,77 @@
+/* src/pages/Dashboard/SummaryCards.css */
+
+.summary-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    margin: 2rem auto;
+    justify-content: center;
+    max-width: 1200px;
+    overflow-x: auto;
+  }
+  
+  .card {
+    flex: 1 1 250px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 130px;
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .card.income {
+    border-left: 5px solid #2ecc71;
+  }
+  
+  .card.expense {
+    border-left: 5px solid #e74c3c;
+  }
+  
+  .card.balance {
+    border-left: 5px solid #6c5ce7;
+  }
+  
+  .card p {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.25rem;
+  }
+  
+  .card h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .change {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 500;
+  }
+  
+  .positive {
+    background: #e5f9e7;
+    color: #2ecc71;
+  }
+  
+  .negative {
+    background: #fdecea;
+    color: #e74c3c;
+  }
+  
+  .neutral {
+    background: #f0f0ff;
+    color: #6c5ce7;
+  }
+  

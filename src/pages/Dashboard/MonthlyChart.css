@@ -1,0 +1,14 @@
+.monthly-chart {
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    margin-right: 1rem;
+  }
+  
+  .monthly-chart h4 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #333;
+  }

@@ -1,0 +1,77 @@
+/* src/components/Header.css */
+.header-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #6366f1;
+  padding: 0.75rem 2rem;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 12px 12px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+}
+
+.logo span {
+  color: #fcd34d;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.circle {
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+}
+
+.logout-btn {
+  padding: 6px 14px;
+  background-color: #a78bfa;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #7c3aed;
+}

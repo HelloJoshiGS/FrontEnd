@@ -1,0 +1,21 @@
+/* src/pages/Dashboard/DashboardCharts.css */
+
+.dashboard-charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 2rem auto;
+    justify-content: center;
+    max-width: 1200px;
+  }
+  
+  .monthly-chart,
+  .category-pie-chart {
+    flex: 1 1 500px;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    min-height: 300px;
+  }
+  

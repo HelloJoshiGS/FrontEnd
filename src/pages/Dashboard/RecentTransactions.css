@@ -1,0 +1,71 @@
+/* src/pages/Dashboard/RecentTransactions.css */
+
+.recent-transactions {
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .rt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .rt-header h4 {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .see-all-btn {
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+  
+  .see-all-btn:hover {
+    background: #5a52d6;
+  }
+  
+  .recent-transactions table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  
+  .recent-transactions th,
+  .recent-transactions td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  
+  .badge.income {
+    background: #e5f9e7;
+    color: #2ecc71;
+  }
+  
+  .badge.expense {
+    background: #fdecea;
+    color: #e74c3c;
+  }
+  
