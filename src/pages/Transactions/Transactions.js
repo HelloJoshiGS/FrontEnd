@@ -1,10 +1,12 @@
 // src/pages/Transactions.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback  } from 'react';
 import axios from '../../services/api';
 import { CSVLink } from 'react-csv';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Transactions.css';
+import debounce from 'lodash.debounce';
+
 
 const Transactions = () => {
   const [allTransactions, setAllTransactions] = useState([]);
@@ -15,10 +17,28 @@ const Transactions = () => {
     startDate: '',
     endDate: '',
     category: '',
-    minAmount: '',
-    maxAmount: '',
+    amount: '',
+    // maxAmount: '',
     sortBy: ''
   });
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const entriesPerPage = 5;
+
+  const indexOfLast = currentPage * entriesPerPage;
+  const indexOfFirst = indexOfLast - entriesPerPage;
+  const currentEntries = transactions.slice(indexOfFirst, indexOfLast);
+
+  const totalPages = Math.ceil(transactions.length / entriesPerPage); 
+
+  const handleNext = () => {
+    if (currentPage < totalPages) setCurrentPage(prev => prev + 1);
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 1) setCurrentPage(prev => prev - 1);
+  };
+
 
   const fetchTransactions = async () => {
     try {
@@ -26,12 +46,15 @@ const Transactions = () => {
       if (filters.startDate) params.startDate = filters.startDate;
       if (filters.endDate) params.endDate = filters.endDate;
       if (filters.category) params.category = filters.category;
-      if (filters.minAmount) params.minAmount = filters.minAmount;
-      if (filters.maxAmount) params.maxAmount = filters.maxAmount;
+      if (filters.amount) params.amount = filters.amount;
+      console.log("Inside fetchTransactions");
+      console.log(params);
+      // if (filters.maxAmount) params.maxAmount = filters.maxAmount;
       if (filters.sortBy) params.sortBy = filters.sortBy;
 
       const res = await axios.get('/expenses', { params });
       const raw = Array.isArray(res.data) ? res.data : res.data.expenses || [];
+      console.log("Raw transactions:", raw);
       setAllTransactions(raw);
       setTransactions(raw);
     } catch (err) {
@@ -39,9 +62,30 @@ const Transactions = () => {
     }
   };
 
+  const debouncedFetch = useCallback(debounce(fetchTransactions, 500), [filters]);
+
+  const ResetAll = () => {
+    console.log("Resetting filters");
+    // fetchTransactions();
+    setFilters({
+      startDate: '',
+      endDate: '',
+      category: '',
+      amount: '',
+      // maxAmount: '',
+      sortBy: ''
+    });
+    
+  };
+
   useEffect(() => {
-    fetchTransactions();
-  }, []);
+    debouncedFetch();
+  
+    // Clean up debounce on unmount
+    return () => debouncedFetch.cancel();
+  }, [filters, debouncedFetch]);
+  
+  
 
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this transaction?')) return;
@@ -88,14 +132,15 @@ const Transactions = () => {
         <input type="date" value={filters.startDate} onChange={(e) => setFilters({ ...filters, startDate: e.target.value })} />
         <input type="date" value={filters.endDate} onChange={(e) => setFilters({ ...filters, endDate: e.target.value })} />
         <input type="text" placeholder="Category" value={filters.category} onChange={(e) => setFilters({ ...filters, category: e.target.value })} />
-        <input type="number" placeholder="Min Amount" value={filters.minAmount} onChange={(e) => setFilters({ ...filters, minAmount: e.target.value })} />
-        <input type="number" placeholder="Max Amount" value={filters.maxAmount} onChange={(e) => setFilters({ ...filters, maxAmount: e.target.value })} />
+        <input type="number" placeholder="Amount" min ='1' value={filters.amount} onChange={(e) => setFilters({ ...filters, amount: e.target.value })} />
+        {/* <input type="number" placeholder="Max Amount" value={filters.maxAmount} onChange={(e) => setFilters({ ...filters, maxAmount: e.target.value })} /> */}
         <select value={filters.sortBy} onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}>
           <option value="">Sort By</option>
           <option value="amount">Amount</option>
           <option value="date">Date</option>
         </select>
         <button onClick={fetchTransactions}>Apply Filters</button>
+        <button onClick={ResetAll}>Reset</button>
         <CSVLink data={transactions} filename="transactions.csv" className="export-btn">
           Export CSV
         </CSVLink>
@@ -141,7 +186,9 @@ const Transactions = () => {
           ))}
         </tbody>
       </table>
+          {/* Pagination does not work at the moment */}
 
+      
       <div className="pagination">
         <span>Showing {transactions.length} of {allTransactions.length} entries</span>
         <div className="page-controls">

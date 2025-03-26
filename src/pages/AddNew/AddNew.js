@@ -18,7 +18,9 @@ const AddTransaction = () => {
   });
 
   const [recentCategories, setRecentCategories] = useState([
-    'Salary', 'Housing', 'Food', 'Transport', 'Investment'
+    'Salary', 'Housing', 'Food', 'Transport', 'Investment', 'Bonus', 'Freelance', 'Interest',
+    'Dividends', 'Gifts', 'Business Income', 'Rental Income', 'Housing', 'Utilities', 'Healthcare', 'Education',
+    'Entertainment', 'Travel', 'Clothing', 'Personal Care', 'Insurance', 'Subscriptions', 'Miscellaneous'
   ]);
 
   const [loading, setLoading] = useState(false);
@@ -110,7 +112,7 @@ const AddTransaction = () => {
         </form>
 
         <div className="recent-categories">
-          <h4>Recent Categories</h4>
+          <h4>Categories</h4>
           <div className="category-tags">
             {recentCategories.map((cat, i) => (
               <span
